@@ -1,8 +1,8 @@
 # language: ru
 
-Функция: Снятие денег со счета
-  Сценарий: Логин
+Функция: Login
+  Сценарий: Login
 
-    * Перейти на страницу логина
-    * Войти под пользователем "monkeyheap@yandex.ru" с паролем "qwer1234"
-    * Проверить строку WELCOME
+    * Goto login page
+    * Login "monkeyheap@yandex.ru" password "<qwer1234>"
+    * Check field WELCOME
