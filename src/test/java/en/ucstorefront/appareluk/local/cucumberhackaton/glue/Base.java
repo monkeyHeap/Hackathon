@@ -1,13 +1,15 @@
-package en.ucstorefront.appareluk.local.cucumberhackaton.base;
+package en.ucstorefront.appareluk.local.cucumberhackaton.glue;
 
 import en.ucstorefront.appareluk.local.cucumberhackaton.page.header.HeaderPage;
 import en.ucstorefront.appareluk.local.cucumberhackaton.page.login.LoginPage;
 import en.ucstorefront.appareluk.local.cucumberhackaton.utility.StepManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.When;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -33,6 +35,7 @@ public class Base {
 
     private static final String BASE_URL = "https://apparel-uk.local:9002/ucstorefront/en/";
     public static final StepManager page = new StepManager();
+
 
     @Before
     public void setUp() {

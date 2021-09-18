@@ -1,8 +1,6 @@
 package en.ucstorefront.appareluk.local.cucumberhackaton.page.header;
 
-import en.ucstorefront.appareluk.local.cucumberhackaton.base.Base;
-import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
+import en.ucstorefront.appareluk.local.cucumberhackaton.glue.Base;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

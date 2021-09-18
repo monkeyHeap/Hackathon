@@ -1,6 +1,5 @@
 package en.ucstorefront.appareluk.local.cucumberhackaton.glue;
 
-import en.ucstorefront.appareluk.local.cucumberhackaton.base.Base;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
