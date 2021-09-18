@@ -9,7 +9,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public enum Browsers {
     CHROME {
-        public WebDriver create(){
+        public WebDriver create() {
             WebDriverManager.chromedriver().setup();
             ChromeOptions option = new ChromeOptions();
             option.addArguments("--ignore-certificate-errors");
@@ -18,7 +18,7 @@ public enum Browsers {
         }
     },
     IE {
-        public WebDriver create(){
+        public WebDriver create() {
             return new InternetExplorerDriver();
         }
     },
@@ -29,7 +29,7 @@ public enum Browsers {
         }
     };
 
-    public WebDriver create(){
+    public WebDriver create() {
         return null;
     }
 }
