@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/feature",
-        glue = "en/ucstorefront/appareluk/local/cucumberhackaton/glue",
+        glue = "glue",
         tags = "@all"
 )
 public class Base {
