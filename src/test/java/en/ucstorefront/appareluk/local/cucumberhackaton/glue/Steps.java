@@ -2,14 +2,17 @@ package en.ucstorefront.appareluk.local.cucumberhackaton.glue;
 
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 
+import static en.ucstorefront.appareluk.local.cucumberhackaton.glue.Base.driver;
 import static en.ucstorefront.appareluk.local.cucumberhackaton.glue.Base.page;
 
 public class Steps {
 
+    JavascriptExecutor executor = (JavascriptExecutor) driver;
 
     @When("^Проверка поля WELCOME$")
-    public void checkFieldWelcome(){
+    public void checkFieldWelcome() {
         Assert.assertTrue(page.headerPage().loginNameLabel.isDisplayed());
     }
 
@@ -17,83 +20,96 @@ public class Steps {
     public void logIn(String user, String psw) {
         page.loginPage().userTextField.sendKeys(user);
         page.loginPage().passwordTextField.sendKeys(psw);
-        page.loginPage().logInButton.click();
+
+        executor.executeScript("arguments[0].click();", page.loginPage().logInButton);
     }
 
     @When("^Переход на страницу авторизации$")
-    public void gotoLogInPage(){
-        page.headerPage().gotoLoginButton.click();
+    public void gotoLogInPage() {
+
+        executor.executeScript("arguments[0].click();", page.headerPage().gotoLoginButton);
     }
 
     @When("^Выбрать товар$")
-    public void chooseProduct(){
-        page.mainPage().productSnowboardSky.click();
+    public void chooseProduct() {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().productSnowboardSky);
     }
 
     @When("^Добавить в корзину$")
-    public void addToBag(){
-        page.addToBagPage().buttonAddToBag.click();
+    public void addToBag() {
+
+        executor.executeScript("arguments[0].click();", page.addToBagPage().buttonAddToBag);
     }
 
     @When("^Просмотреть корзину$")
-    public void gotoBasket(){
-        page.addToBagPage().buttonCheckOut.click();
+    public void gotoBasket() {
+
+        executor.executeScript("arguments[0].click();", page.addToBagPage().buttonCheckOut);
     }
 
     @When("^Переход на страницу Brand$")
-    public void gotoBrandPage(){
-        page.mainPage().buttonBrands.click();
+    public void gotoBrandPage() {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonBrands);
     }
 
     @When("^Переход на страницу Streetwear$")
-    public void gotoStreetwearPage(){
-        page.mainPage().buttonStreetwear.click();
+    public void gotoStreetwearPage() {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonStreetwear);
     }
 
     @When("^Переход на страницу Snow$")
     public void gotoSnowPage() {
-        page.mainPage().buttonSnow.click();
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonSnow);
     }
 
     @When("^Переход на страницу Accessories$")
-    public void gotoAccessoriesPage(){
-        page.mainPage().buttonAccessories.click();
+    public void gotoAccessoriesPage() {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonAccessories);
     }
 
     @When("^Переход на страницу Youth$")
-    public void gotoYouthPage(){
-        page.mainPage().buttonYouth.click();
+    public void gotoYouthPage() {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonYouth);
     }
 
     @When("^Поиск товара \"([^\"]*)\"$")
-    public void searchYouthPantPeach(String item){
-        page.mainPage().buttonYouth.click();
+    public void searchYouthPantPeach(String item) {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonYouth);
         page.youthPage().SearchField.sendKeys(item);
-        page.youthPage().searchButton.click();
+        executor.executeScript("arguments[0].click();", page.youthPage().searchButton);
     }
 
     @When("^Проверка первого отображенного элемента поиска$")
-    public void checkFirstSearchElement(){
+    public void checkFirstSearchElement() {
         Assert.assertEquals("Поиск неверно вывел первый по списку товар", page.searchPage().firstSearchElement.getText(), "Plan B Youth Pant peach XL");
     }
 
     @When("^Переход на страницу списка магазинов$")
-    public void checkShopLocationPage(){
-        page.mainPage().buttonShopLocation.click();
+    public void checkShopLocationPage() {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonShopLocation);
     }
 
     @When("^Переход на страницу QuickOrder$")
-    public void gotoShopLocationPage(){
-        page.mainPage().buttonOrderTools.click();
-        page.mainPage().quckOrderButton.click();
+    public void gotoShopLocationPage() {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonOrderTools);
+        executor.executeScript("arguments[0].click();", page.mainPage().quckOrderButton);
     }
 
     @When("^Выйти из учетной записи$")
     public void logIn() {
-        page.mainPage().logButton.click();
+        executor.executeScript("arguments[0].click();", page.mainPage().logButton);
         page.loginPage().userTextField.sendKeys("monkeyheap@yandex.ru");
         page.loginPage().passwordTextField.sendKeys("qwer1234");
-        page.loginPage().logInButton.click();
-        page.mainPage().logOutButton.click();
+        executor.executeScript("arguments[0].click();", page.loginPage().logInButton);
+        executor.executeScript("arguments[0].click();", page.mainPage().logOutButton);
     }
 }
