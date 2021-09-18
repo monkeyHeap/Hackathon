@@ -1,11 +1,6 @@
 package en.ucstorefront.appareluk.local.cucumberhackaton.utility;
 
-import en.ucstorefront.appareluk.local.cucumberhackaton.page.AddToBagPage;
-import en.ucstorefront.appareluk.local.cucumberhackaton.page.MainPage;
-import en.ucstorefront.appareluk.local.cucumberhackaton.page.SearchPage;
-import en.ucstorefront.appareluk.local.cucumberhackaton.page.YouthPage;
-import en.ucstorefront.appareluk.local.cucumberhackaton.page.header.HeaderPage;
-import en.ucstorefront.appareluk.local.cucumberhackaton.page.login.LoginPage;
+import en.ucstorefront.appareluk.local.cucumberhackaton.page.*;
 
 public class StepManager {
     private MainPage mainPage;
