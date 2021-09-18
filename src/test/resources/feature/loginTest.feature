@@ -1,6 +1,10 @@
 @SmokeTest
 Feature: Login
   Scenario: Login
-    * Goto login page
-    * Login "monkeyheap@yandex.ru" password "qwer1234"
-    * Check field WELCOME
+    * Переход на страницу авторизации
+    * Логин "monkeyheap@yandex.ru" пароль "qwer1234"
+    * Проверка поля WELCOME
+
+  @SmokeTest
+  Scenario: Login
+    * Переход на страницу авторизации
