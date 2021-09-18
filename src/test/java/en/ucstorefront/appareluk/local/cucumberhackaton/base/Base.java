@@ -16,8 +16,6 @@ public class Base {
 
     @Before
     public void setUp(){
-
-        System.out.println("driver " + driver);
         driver = new ChromeDriver();
         System.out.println("driver " + driver);
         driver.manage().window().maximize();
