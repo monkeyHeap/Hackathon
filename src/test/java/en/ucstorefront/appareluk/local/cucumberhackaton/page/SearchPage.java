@@ -13,6 +13,6 @@ public class SearchPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//div[@class=\"product-item\"]/div/a[@href=\"/ucstorefront/en/Categories/Snowwear-youth/Snow-Pants-youth/Plan-B-Youth-Pant/p/300438086\"]")
+    @FindBy(xpath = "//div[@class='product-item']/div/a[@href='/ucstorefront/en/Categories/Snowwear-youth/Snow-Pants-youth/Plan-B-Youth-Pant/p/300438086']")
     public  WebElement firstSearchElement;
 }

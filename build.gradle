@@ -11,12 +11,14 @@ repositories {
 
 sourceCompatibility = 1.8
 
-tasks.withType(JavaCompile){
+tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-tasks.withType(Test){
-   maxParallelForks = 1
+
+tasks.withType(Test) {
+    jvmArgs "-Dbrowser=" +  System.getProperty('browser')
+    maxParallelForks = 1
 }
 
 dependencies {
@@ -28,6 +30,7 @@ dependencies {
     implementation("io.github.bonigarcia:webdrivermanager:5.0.1")
     testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '6.11.0'
     testImplementation 'io.github.prashant-ramcharan:courgette-jvm:5.12.0'
+    implementation group: 'org.aeonbits.owner', name: 'owner', version: '1.0.4'
 }
 
 configurations {
@@ -41,15 +44,11 @@ task cucumber(type: Test) {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
             def tags = System.getProperty('tags')
-            args = [ '--plugin','pretty',
-                    '--plugin','html:CucumberReports',
+            args = ['--plugin', 'pretty',
+                    '--plugin', 'html:CucumberReports',
                     '--plugin', 'html:cucumber-report',
                     '--glue', 'en/ucstorefront/appareluk/local/cucumberhackaton/glue', 'src/test/resources/feature',
                     '--tags', tags]
         }
     }
-}
-
-test {
-    useJUnitPlatform()
 }

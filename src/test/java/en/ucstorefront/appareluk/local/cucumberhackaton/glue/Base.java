@@ -4,15 +4,14 @@ import courgette.api.CourgetteOptions;
 import courgette.api.CourgetteRunLevel;
 import courgette.api.CucumberOptions;
 import courgette.api.junit.Courgette;
+import en.ucstorefront.appareluk.local.cucumberhackaton.utility.Browsers;
+import en.ucstorefront.appareluk.local.cucumberhackaton.utility.ServerConfig;
 import en.ucstorefront.appareluk.local.cucumberhackaton.utility.StepManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.cucumber.junit.Cucumber;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -37,26 +36,31 @@ public class Base {
         return driver;
     }
 
-    private static final String BASE_URL = "https://apparel-uk.local:9002/ucstorefront/en/";
+    private final ServerConfig serverConfig = ConfigFactory.create(ServerConfig.class);
     public static final StepManager page = new StepManager();
+
+    public static String geBrowser(){
+        if (System.getProperty("browser") != null)
+            return System.getProperty("browser");
+        else
+            return "chrome";
+    }
 
     @Before
     public void setUp() {
-        ChromeOptions option = new ChromeOptions();
-        option.addArguments("--ignore-certificate-errors");
-        option.addArguments("--headless");
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(option);
+        driver = Browsers.valueOf(geBrowser().toUpperCase()).create();;
         driver.manage().window().maximize();
         driver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(BASE_URL);
+        driver.get(serverConfig.url());
         page.init();
     }
 
     @After
     public void close() {
+        driver.manage().deleteAllCookies();
         driver.close();
+
     }
 }
