@@ -3,22 +3,24 @@ package en.ucstorefront.appareluk.local.cucumberhackaton.glue;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+import java.net.URL;
+
 public class Steps {
 
 
-    @When("^Check field WELCOME$")
+    @When("^Проверка поля WELCOME$")
     public void checkFieldWelcome(){
         Assert.assertTrue(Base.page.headerPage().loginNameLabel.isDisplayed());
     }
 
-    @When("^Login \"([^\"]*)\" password \"([^\"]*)\"$")
+    @When("^Логин \"([^\"]*)\" пароль \"([^\"]*)\"$")
     public void logIn(String user, String psw) {
         Base.page.loginPage().userTextField.sendKeys(user);
         Base.page.loginPage().passwordTextField.sendKeys(psw);
         Base.page.loginPage().logInButton.click();
     }
 
-    @When("^Goto login page$")
+    @When("^Переход на страницу авторизации$")
     public void gotoLogInPage(){
         Base.page.headerPage().gotoLoginButton.click();
     }
