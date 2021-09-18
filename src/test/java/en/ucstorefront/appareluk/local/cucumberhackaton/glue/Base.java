@@ -35,6 +35,7 @@ public class Base {
     public void setUp() {
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--ignore-certificate-errors");
+        option.addArguments("--headless");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(option);
         driver.manage().window().maximize();
