@@ -15,7 +15,6 @@ tasks.withType(JavaCompile){
     options.encoding = 'UTF-8'
 }
 
-
 dependencies {
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
@@ -37,7 +36,8 @@ task cucumber() {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
             def tags = System.getProperty('tags')
-            args = [
+            args = [ '--plugin','pretty',
+                    '--plugin','html:CucumberReports',
                     '--plugin', 'html:cucumber-report',
                     '--glue', 'en/ucstorefront/appareluk/local/cucumberhackaton/glue', 'src/test/resources/feature',
                     '--tags', tags]
