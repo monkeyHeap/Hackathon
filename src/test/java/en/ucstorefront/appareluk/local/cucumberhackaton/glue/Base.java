@@ -48,6 +48,8 @@ public class Base {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(option);
         driver.manage().window().maximize();
+        driver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(BASE_URL);
         page.init();
