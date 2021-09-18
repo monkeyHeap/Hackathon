@@ -17,6 +17,9 @@ public class HeaderPage {
     @FindBy(xpath = "//*[@class=\"liOffcanvas\"]/a")
     public WebElement gotoLoginButton;
 
+    @FindBy(xpath = "//*[@class=\"logged_in js-logged_in\"]")
+    public WebElement loginNameLabel;
+
 
 
 }
