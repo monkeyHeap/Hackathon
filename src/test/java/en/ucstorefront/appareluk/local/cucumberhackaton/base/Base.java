@@ -1,7 +1,7 @@
 package en.ucstorefront.appareluk.local.cucumberhackaton.base;
 
+import en.ucstorefront.appareluk.local.cucumberhackaton.page.header.HeaderPage;
 import en.ucstorefront.appareluk.local.cucumberhackaton.page.login.LoginPage;
-import en.ucstorefront.appareluk.local.cucumberhackaton.page.login.LoginSteps;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -9,12 +9,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.awt.geom.GeneralPath;
 import java.util.concurrent.TimeUnit;
 
 public class Base {
 
     public static WebDriver driver;
-    public LoginSteps loginPage;
+    public LoginPage loginPage;
+    public HeaderPage headerPage;
 
     public static WebDriver getDefaultDriver() {
         return driver;
@@ -28,11 +30,11 @@ public class Base {
         option.addArguments("--ignore-certificate-errors");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(option);
-        System.out.println("driver " + driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(BASE_URL);
-        loginPage = new LoginSteps();
+        loginPage = new LoginPage();
+        headerPage = new HeaderPage();
     }
 
     @After

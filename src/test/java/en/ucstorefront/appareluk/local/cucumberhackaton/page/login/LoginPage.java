@@ -10,6 +10,11 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
+    protected WebDriver driver = Base.getDefaultDriver();
+
+    public LoginPage() {
+        PageFactory.initElements(driver, this);
+    }
 
 
     @FindBy(xpath = "//*[@id=\"j_username\"]")
@@ -21,15 +26,11 @@ public class LoginPage {
     @FindBy(xpath = "//*[@class=\"btn btn-primary btn-block\"]")
     private WebElement logInButton;
 
-    public WebElement getUserTextField() {
-        return userTextField;
+    @When("^Login \"([^\"]*)\" \"([^\"]*)\"$")
+    public void logIn(String user, String psw) {
+        userTextField.sendKeys(user);
+        passwordTextField.sendKeys(psw);
+        logInButton.click();
     }
 
-    public WebElement getPasswordTextField() {
-        return passwordTextField;
-    }
-
-    public WebElement getLogInButton() {
-        return logInButton;
-    }
 }
