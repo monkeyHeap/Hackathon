@@ -10,16 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
-    protected WebDriver driver = Base.getDefaultDriver();
 
-    public LoginPage(){
-        PageFactory.initElements(driver, this);
-    }
-
-    public LoginPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
 
     @FindBy(xpath = "//*[@id=\"j_username\"]")
     private WebElement userTextField;
@@ -30,16 +21,15 @@ public class LoginPage {
     @FindBy(xpath = "//*[@class=\"btn btn-primary btn-block\"]")
     private WebElement logInButton;
 
-    @When("^goto login page$")
-    public void gotoLogInPage(){
-        driver.findElement(By.xpath("//*[@class=\"liOffcanvas\"]/a")).click();
+    public WebElement getUserTextField() {
+        return userTextField;
     }
 
+    public WebElement getPasswordTextField() {
+        return passwordTextField;
+    }
 
-    @When("^Login \"([^\"]*)\" \"([^\"]*)\"$")
-    public void logIn(String user, String psw) {
-        userTextField.sendKeys(user);
-        passwordTextField.sendKeys(psw);
-        logInButton.click();
+    public WebElement getLogInButton() {
+        return logInButton;
     }
 }

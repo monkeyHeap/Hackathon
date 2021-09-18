@@ -1,6 +1,7 @@
 package en.ucstorefront.appareluk.local.cucumberhackaton.base;
 
 import en.ucstorefront.appareluk.local.cucumberhackaton.page.login.LoginPage;
+import en.ucstorefront.appareluk.local.cucumberhackaton.page.login.LoginSteps;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -13,14 +14,9 @@ import java.util.concurrent.TimeUnit;
 public class Base {
 
     public static WebDriver driver;
-    public LoginPage loginPage;
+    public LoginSteps loginPage;
 
     public static WebDriver getDefaultDriver() {
-        if (driver != null) {
-            return driver;
-        }
-        //System.setProperty("webdriver.chrome.driver", "webdrivers/chromedriver.exe");
-        //System.setProperty("webdriver.gecko.driver", "./geckodriver");
         return driver;
     }
 
@@ -36,7 +32,7 @@ public class Base {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(BASE_URL);
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginSteps();
     }
 
     @After
