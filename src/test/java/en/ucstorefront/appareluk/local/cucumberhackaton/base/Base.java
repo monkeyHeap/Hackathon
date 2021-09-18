@@ -9,13 +9,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class Base {
-     public  WebDriver driver;
+     public WebDriver driver;
      public LoginPage loginPage;
 
     private static final String BASE_URL = "https://apparel-uk.local:9002/ucstorefront/en/";
 
     @Before
     public void setUp(){
+        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         driver = new ChromeDriver();
         System.out.println("driver " + driver);
         driver.manage().window().maximize();
