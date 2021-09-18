@@ -1,7 +1,7 @@
-package en.ucstorefront.appareluk.local.cucumberhackaton.base;
+package en.ucstorefront.appareluk.local.cucumberhackaton.glue;
 
-import en.ucstorefront.appareluk.local.cucumberhackaton.page.header.HeaderPage;
-import en.ucstorefront.appareluk.local.cucumberhackaton.page.login.LoginPage;
+import en.ucstorefront.appareluk.local.cucumberhackaton.page.HeaderPage;
+import en.ucstorefront.appareluk.local.cucumberhackaton.page.LoginPage;
 import en.ucstorefront.appareluk.local.cucumberhackaton.utility.StepManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -18,14 +18,11 @@ import java.util.concurrent.TimeUnit;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/feature",
-        glue = "glue",
-        tags = "@all"
+        glue = "en/ucstorefront/appareluk/local/cucumberhackaton/glue"
 )
 public class Base {
 
     public static WebDriver driver;
-    public LoginPage loginPage;
-    public HeaderPage headerPage;
 
     public static WebDriver getDefaultDriver() {
         return driver;
