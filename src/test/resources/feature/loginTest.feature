@@ -1,10 +1,9 @@
+# language: ru
+
+@all
 @SmokeTest
-Feature: Login
-  Scenario: Login
+Функция: Login
+
+  Сценарий: Login
     * Переход на страницу авторизации
     * Логин "monkeyheap@yandex.ru" пароль "qwer1234"
-
-
-  @SmokeTest
-  Scenario: Login
-    * Переход на страницу авторизации

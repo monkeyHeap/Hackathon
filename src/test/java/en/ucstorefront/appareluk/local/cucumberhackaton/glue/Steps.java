@@ -88,7 +88,7 @@ public class Steps {
 
     @When("^Проверка первого отображенного элемента поиска$")
     public void checkFirstSearchElement() {
-        Assert.assertEquals("Поиск неверно вывел первый по списку товар", page.searchPage().firstSearchElement.getText(), "Plan B Youth Pant peach XL");
+        Assert.assertTrue("Поиск неверно вывел первый по списку товар", page.searchPage().firstSearchElement.getText().contains("Plan B Youth Pant peach XL"));
     }
 
     @When("^Переход на страницу списка магазинов$")
