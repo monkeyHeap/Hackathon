@@ -1,12 +1,13 @@
 package en.ucstorefront.appareluk.local.cucumberhackaton.glue;
 
-import en.ucstorefront.appareluk.local.cucumberhackaton.page.HeaderPage;
-import en.ucstorefront.appareluk.local.cucumberhackaton.page.LoginPage;
+import courgette.api.CourgetteOptions;
+import courgette.api.CourgetteRunLevel;
+import courgette.api.CucumberOptions;
+import courgette.api.junit.Courgette;
 import en.ucstorefront.appareluk.local.cucumberhackaton.utility.StepManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -15,11 +16,19 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.concurrent.TimeUnit;
 
-@RunWith(Cucumber.class)
-@CucumberOptions(
+@RunWith(Courgette.class)
+@CourgetteOptions(
+        runLevel = CourgetteRunLevel.SCENARIO,
+        rerunFailedScenarios = true,
+        rerunAttempts = 1,
+        showTestOutput = true,
+        reportTitle = "Courgette-JVM Example",
+        reportTargetDir = "build",
+        environmentInfo = "browser=chrome; git_branch=master",
+        cucumberOptions = @CucumberOptions(
         features = "src/test/resources/feature",
         glue = "en/ucstorefront/appareluk/local/cucumberhackaton/glue"
-)
+))
 public class Base {
 
     public static WebDriver driver;
@@ -35,7 +44,7 @@ public class Base {
     public void setUp() {
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--ignore-certificate-errors");
-        option.addArguments("--headless");
+       // option.addArguments("--headless");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(option);
         driver.manage().window().maximize();

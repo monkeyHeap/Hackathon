@@ -15,6 +15,10 @@ tasks.withType(JavaCompile){
     options.encoding = 'UTF-8'
 }
 
+tasks.withType(Test){
+   maxParallelForks = 1
+}
+
 dependencies {
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
@@ -23,13 +27,14 @@ dependencies {
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     implementation("io.github.bonigarcia:webdrivermanager:5.0.1")
     testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '6.11.0'
+    testImplementation 'io.github.prashant-ramcharan:courgette-jvm:5.12.0'
 }
 
 configurations {
     cucumberRuntime.extendsFrom testImplementation
 }
 
-task cucumber() {
+task cucumber(type: Test) {
     dependsOn assemble, compileTestJava
     doLast {
         javaexec {
