@@ -2,98 +2,114 @@ package en.ucstorefront.appareluk.local.cucumberhackaton.glue;
 
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 
-import java.net.URL;
+import static en.ucstorefront.appareluk.local.cucumberhackaton.glue.Base.driver;
+import static en.ucstorefront.appareluk.local.cucumberhackaton.glue.Base.page;
 
 public class Steps {
 
+    JavascriptExecutor executor = (JavascriptExecutor) driver;
 
     @When("^Проверка поля WELCOME$")
-    public void checkFieldWelcome(){
-        Assert.assertTrue(Base.page.headerPage().loginNameLabel.isDisplayed());
+    public void checkFieldWelcome() {
+        Assert.assertTrue(page.headerPage().loginNameLabel.isDisplayed());
     }
 
     @When("^Логин \"([^\"]*)\" пароль \"([^\"]*)\"$")
     public void logIn(String user, String psw) {
-        Base.page.loginPage().userTextField.sendKeys(user);
-        Base.page.loginPage().passwordTextField.sendKeys(psw);
-        Base.page.loginPage().logInButton.click();
+        page.loginPage().userTextField.sendKeys(user);
+        page.loginPage().passwordTextField.sendKeys(psw);
+
+        executor.executeScript("arguments[0].click();", page.loginPage().logInButton);
     }
 
     @When("^Переход на страницу авторизации$")
-    public void gotoLogInPage(){
-        Base.page.headerPage().gotoLoginButton.click();
+    public void gotoLogInPage() {
+
+        executor.executeScript("arguments[0].click();", page.headerPage().gotoLoginButton);
     }
 
     @When("^Выбрать товар$")
-    public void chooseProduct(){
-        Base.page.mainPage().productSnowboardSky.click();
+    public void chooseProduct() {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().productSnowboardSky);
     }
 
     @When("^Добавить в корзину$")
-    public void addToBag(){
-        Base.page.addToBagPage().buttonAddToBag.click();
+    public void addToBag() {
+
+        executor.executeScript("arguments[0].click();", page.addToBagPage().buttonAddToBag);
     }
 
     @When("^Просмотреть корзину$")
-    public void gotoBasket(){
-        Base.page.addToBagPage().buttonCheckOut.click();
+    public void gotoBasket() {
+
+        executor.executeScript("arguments[0].click();", page.addToBagPage().buttonCheckOut);
     }
 
     @When("^Переход на страницу Brand$")
-    public void gotoBrandPage(){
-        Base.page.mainPage().buttonBrands.click();
+    public void gotoBrandPage() {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonBrands);
     }
 
     @When("^Переход на страницу Streetwear$")
-    public void gotoStreetwearPage(){
-        Base.page.mainPage().buttonStreetwear.click();
+    public void gotoStreetwearPage() {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonStreetwear);
     }
 
     @When("^Переход на страницу Snow$")
     public void gotoSnowPage() {
-        Base.page.mainPage().buttonSnow.click();
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonSnow);
     }
 
     @When("^Переход на страницу Accessories$")
-    public void gotoAccessoriesPage(){
-        Base.page.mainPage().buttonAccessories.click();
+    public void gotoAccessoriesPage() {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonAccessories);
     }
 
     @When("^Переход на страницу Youth$")
-    public void gotoYouthPage(){
-        Base.page.mainPage().buttonYouth.click();
+    public void gotoYouthPage() {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonYouth);
     }
 
     @When("^Поиск товара \"([^\"]*)\"$")
-    public void searchYouthPantPeach(String item){
-        Base.page.mainPage().buttonYouth.click();
-        Base.page.youthPage().SearchField.sendKeys(item);
-        Base.page.youthPage().searchButton.click();
+    public void searchYouthPantPeach(String item) {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonYouth);
+        page.youthPage().SearchField.sendKeys(item);
+        executor.executeScript("arguments[0].click();", page.youthPage().searchButton);
     }
 
     @When("^Проверка первого отображенного элемента поиска$")
-    public void checkFirstSearchElement(){
-        Assert.assertEquals("Поиск неверно вывел первый по списку товар", Base.page.searchPage().firstSearchElement.getText(), "Plan B Youth Pant peach XL");
+    public void checkFirstSearchElement() {
+        Assert.assertTrue("Поиск неверно вывел первый по списку товар", page.searchPage().firstSearchElement.getText().contains("Plan B Youth Pant peach XL"));
     }
 
     @When("^Переход на страницу списка магазинов$")
-    public void checkShopLocationPage(){
-        Base.page.mainPage().buttonShopLocation.click();
+    public void checkShopLocationPage() {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonShopLocation);
     }
 
     @When("^Переход на страницу QuickOrder$")
-    public void gotoShopLocationPage(){
-        Base.page.mainPage().buttonOrderTools.click();
-        Base.page.mainPage().quckOrderButton.click();
+    public void gotoShopLocationPage() {
+
+        executor.executeScript("arguments[0].click();", page.mainPage().buttonOrderTools);
+        executor.executeScript("arguments[0].click();", page.mainPage().quckOrderButton);
     }
 
     @When("^Выйти из учетной записи$")
     public void logIn() {
-        Base.page.mainPage().logButton.click();
-        Base.page.loginPage().userTextField.sendKeys("monkeyheap@yandex.ru");
-        Base.page.loginPage().passwordTextField.sendKeys("qwer1234");
-        Base.page.loginPage().logInButton.click();
-        Base.page.mainPage().logOutButton.click();
+        executor.executeScript("arguments[0].click();", page.mainPage().logButton);
+        page.loginPage().userTextField.sendKeys("monkeyheap@yandex.ru");
+        page.loginPage().passwordTextField.sendKeys("qwer1234");
+        executor.executeScript("arguments[0].click();", page.loginPage().logInButton);
+        executor.executeScript("arguments[0].click();", page.mainPage().logOutButton);
     }
 }
