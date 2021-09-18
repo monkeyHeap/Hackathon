@@ -20,6 +20,26 @@ dependencies {
     testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '6.11.0'
 }
 
+configurations {
+    cucumberRuntime.extendsFrom testImplementation
+}
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+
+            args = [
+                    '--plugin', 'html:cucumber-report',
+                    '--glue', 'en/ucstorefront/appareluk/local/cucumberhackaton/glue', 'src/test/resources/feature'
+            ]
+        }
+
+    }
+}
+
 test {
     useJUnitPlatform()
 }
