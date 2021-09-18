@@ -1,6 +1,4 @@
-# language: ru
 @Regress
-Функция: Снятие денег со счета
-  Сценарий: Логин
-    * goto login page
-    * Login "monkeyHeap@yandex.ru" "qwer1234"
+Feature: Test tags
+Scenario: Login
+* Goto login page
