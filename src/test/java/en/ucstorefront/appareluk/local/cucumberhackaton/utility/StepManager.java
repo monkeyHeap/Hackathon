@@ -1,7 +1,7 @@
 package en.ucstorefront.appareluk.local.cucumberhackaton.utility;
 
-import en.ucstorefront.appareluk.local.cucumberhackaton.page.header.HeaderPage;
-import en.ucstorefront.appareluk.local.cucumberhackaton.page.login.LoginPage;
+import en.ucstorefront.appareluk.local.cucumberhackaton.page.HeaderPage;
+import en.ucstorefront.appareluk.local.cucumberhackaton.page.LoginPage;
 
 public class StepManager {
     private HeaderPage headerPage;
