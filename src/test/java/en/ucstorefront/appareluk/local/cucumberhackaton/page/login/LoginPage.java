@@ -18,19 +18,14 @@ public class LoginPage {
 
 
     @FindBy(xpath = "//*[@id=\"j_username\"]")
-    private WebElement userTextField;
+    public WebElement userTextField;
 
     @FindBy(xpath = "//*[@id=\"j_password\"]")
-    private WebElement passwordTextField;
+    public WebElement passwordTextField;
 
     @FindBy(xpath = "//*[@class=\"btn btn-primary btn-block\"]")
-    private WebElement logInButton;
+    public WebElement logInButton;
 
-    @When("^Login \"([^\"]*)\" \"([^\"]*)\"$")
-    public void logIn(String user, String psw) {
-        userTextField.sendKeys(user);
-        passwordTextField.sendKeys(psw);
-        logInButton.click();
-    }
+
 
 }

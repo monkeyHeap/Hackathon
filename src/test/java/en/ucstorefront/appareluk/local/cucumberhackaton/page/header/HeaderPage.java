@@ -17,11 +17,8 @@ public class HeaderPage {
     }
 
     @FindBy(xpath = "//*[@class=\"liOffcanvas\"]/a")
-    private WebElement gotoLoginButton;
+    public WebElement gotoLoginButton;
 
 
-    @When("^goto login page$")
-    public void gotoLogInPage(){
-        gotoLoginButton.click();
-    }
+
 }
